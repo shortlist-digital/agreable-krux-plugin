@@ -19,6 +19,10 @@ class Krux {
 
   public function add_krux_datalayer() {
     global $post;
+    if (!$post) {
+      throw new \Exception('global $post is not set for Krux datalayer to function');
+    }
+
     $context = Timber::get_context();
 
     $context['data_layer'] = json_encode(DataLayerGenerator::get($post));

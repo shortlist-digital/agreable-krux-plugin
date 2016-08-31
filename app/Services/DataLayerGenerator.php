@@ -13,7 +13,10 @@ class DataLayerGenerator {
     $data_layer = new stdClass();
     $data_layer->type = $data_layer->articleType = 'article';
     $data_layer->sub_type = $data_layer->articleType = $post->post_type;
-    $data_layer->section = $categories->parent->slug;
+    if (isset($categories->parent) && $categories->parent->slug) {
+      $data_layer->section = $categories->parent->slug;
+    }
+
     if (isset($categories->child) && isset($categories->child->slug)) {
       $data_layer->subsections = [$categories->child->slug];
     }
