@@ -1,0 +1,18 @@
+{% if krux_plugin.site_name and krux_plugin.site_id %}
+  <!-- BEGIN Krux Control Tag for "{{ krux_plugin.site_name }}" -->
+  <!-- Source: /controltag?confid={{ krux_plugin.site_id }}&site={{ krux_plugin.site_name }}&edit=1 -->
+  <script class="kxct" data-id="{{ krux_plugin.site_id }}" data-timing="async" data-version="2.0" type="text/javascript">
+  window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+  (function(){
+    var k=document.createElement('script');k.type='text/javascript';k.async=true;
+    var m,src=(m=location.href.match(/\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);
+    k.src = /^https?:\/\/([a-z0-9_\-\.]+\.)?krxd\.net(:\d{1,5})?\/controltag\//i.test(src) ? src : src === "disable" ? "" :
+    (location.protocol==="https:"?"https:":"http:")+"//cdn.krxd.net/controltag?confid={{ krux_plugin.site_id }}";
+    var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+  }());
+  </script>
+  <!-- END Krux Controltag -->
+
+{% else %}
+  <script>console.warn('agreable-krux-plugin enabled, but site_name and site_id are not set');</script>
+{% endif %}
