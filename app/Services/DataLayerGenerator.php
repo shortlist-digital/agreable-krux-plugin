@@ -7,12 +7,13 @@ use \stdClass;
 class DataLayerGenerator {
   public static function get($post, $overrides = null) {
 
+
     $categories = AgreableCategoryService::get_post_category_hierarchy($post);
 
     $data_layer_container = [];
     $data_layer = new stdClass();
     $data_layer->type = $data_layer->articleType = 'article';
-    $data_layer->sub_type = $data_layer->articleType = $post->post_type;
+    $data_layer->sub_type = $post->post_type;
     if (isset($categories->parent) && $categories->parent->slug) {
       $data_layer->section = $categories->parent->slug;
     }
