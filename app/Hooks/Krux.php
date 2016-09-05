@@ -19,8 +19,10 @@ class Krux {
 
   public function add_krux_datalayer() {
     global $post;
+
     if (!$post) {
-      throw new \Exception('global $post is not set for Krux datalayer to function');
+      // No $post to retrieve
+      return;
     }
 
     $context = Timber::get_context();
