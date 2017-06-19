@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "shortlist-digital/herbert-framework": "~1.0",
+    "shortlist-digital/herbert-framework": "~1.0"
   },
   "config": {
       "bin-dir": "bin/"
